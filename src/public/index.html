@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Compañía Aérea</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="images/logoAvion.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="images/logoAvion.png" sizes="16x16" type="image/png">
+
+</head>
+
+<body>
+    <div class="video-container">
+        <video muted autoplay loop>
+            <source src="./video/fondoAerolinea.mp4" type="video/mp4">
+        </video>
+        <img src="./images/logoAvion.png" alt="" class="logo">
+        <h1 class="title">Compañía Aérea</h1>
+        <h3 class="eslogan">"Conectando Sueños, Elevando Experiencias"</h3>
+    </div>
+    <div class="container">
+        <div class="window window1" onclick="window.location.href='./html/crearPiloto.html'">
+            <h2>Piloto</h2>
+            <p>Ir a registrar piloto</p>
+        </div>
+        <div class="window window2" onclick="window.location.href='./html/crearAvion.html'">
+            <h2>Avión</h2>
+            <p>Ir a registrar avión</p>
+        </div>
+    </div>
+    <div class="container2">
+        <div>
+            <a>¿Ya registraste el piloto? </a><a href="./html/consultarPiloto.html">Consulta aquí</a>
+        </div>
+        <div>
+            <a> ¿Ya registraste el avión? </a><a href="./html/consultarAvion.html">Consulta aquí</a>
+        </div>
+    </div>
+    
+        <!-- Pie de página -->
+        <footer>
+            <p>&copy; 2024 Compañía Aérea. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="mailto:info@companiaaerea.com">info@companiaaerea.com</a></p>
+            <p><a href="./html/terminos.html">Términos y Condiciones</a> | <a href="./html/politica.html">Política de Privacidad</a></p>
+        </footer>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Pilotos - Página Aérea</title>
+    <link rel="stylesheet" href="../css/consultarPiloto.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link rel="icon" href="../images/logoAvion.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../images/logoAvion.png" sizes="16x16" type="image/png">
+
+</head>
+
+<body>
+    <header>
+        <h1>Listado de Piloto</h1>
+    </header>
+
+    <main>
+        <section class="container">
+            <!-- Formulario de búsqueda -->
+            <div class="search-form">
+                <input type="text" id="searchCI" placeholder="Buscar por Cédula" oninput="fetchPilotos()">
+                <button onclick="fetchPilotos()">Buscar</button>
+                <button onclick="goBack()" class="volver">Volver</button>
+                <button onclick="add()"><i class="bi bi-person-plus-fill"></i></button>
+            </div>
+
+            <!-- Tabla de personas -->
+            <div class="table-container">
+                <table id="pilotosTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Cédula</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Celular</th>
+                            <th>Email</th>
+                            <th>Horas Vuelo</th>
+                            <th>Fecha Contratación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos de pilotos se llenarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <p id="noDataMessage" style="display: none;">Piloto no encontrado</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Compañía Aérea. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:info@companiaaerea.com">info@companiaaerea.com</a></p>
+        <p><a href="../html/terminos.html">Términos y Condiciones</a> | <a href="../html/politica.html">Política de
+            Privacidad</a></p>
+    </footer>
+
+    <script src="../js/consultarPiloto.js"></script>
+    <script>
+        function goBack() {
+            window.location.href='../index.html';
+        }
+    </script>
+    <script>
+        function add() {
+            window.location.href='./crearPiloto.html';
+        }
+    </script>
+</body>
+
+</html>

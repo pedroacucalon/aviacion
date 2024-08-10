@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Aviones - Página Aérea</title>
+    <link rel="stylesheet" href="../css/consultarAvion.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+    rel="stylesheet">
+    
+    <link rel="icon" href="../images/logoAvion.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../images/logoAvion.png" sizes="16x16" type="image/png">
+</head>
+
+<body>
+    <header>
+        <h1>Listado de Aviones</h1>
+    </header>
+
+    <main>
+        <section class="container">
+            <!-- Formulario de búsqueda -->
+            <div class="search-form">
+                <input type="number" id="searchId" placeholder="Buscar por Código" oninput="fetchAviones()">
+                <button onclick="fetchAviones()">Buscar</button>
+                <button onclick="goBack()" class="volver">Volver</button>
+                <button onclick="add()"><i class="bi bi-airplane-fill"></i></button>
+            </div>
+
+            <!-- Tabla de aviones -->
+            <div class="table-container">
+                <table id="avionesTable">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Modelo</th>
+                            <th>Tipo</th>
+                            <th>Capacidad</th>
+                            <th>Matrícula</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos de los aviones se llenarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+            <p id="noDataMessage" style="display: none;">Avión no encontrado</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Compañía Aérea. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:info@companiaaerea.com">info@companiaaerea.com</a></p>
+        <p><a href="../html/terminos.html">Términos y Condiciones</a> | <a href="../html/politica.html">Política de
+                Privacidad</a></p>
+    </footer>
+
+    <script src="../js/consultarAvion.js"></script>
+    <script>
+        function goBack() {
+            window.location.href='../index.html';
+        }
+    </script>
+    <script>
+        function add() {
+            window.location.href='./crearAvion.html';
+        }
+    </script>
+</body>
+
+</html>

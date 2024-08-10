@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model Avion{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  modelo String @db.VarChar(50) @map("modelo")
+  tipo String @db.VarChar(50) @map("tipo")
+  capacidad Int @db.Integer @map("capacidad")
+  matricula String @db.VarChar(20) @unique @map("matricula")
+  estado String @db.VarChar(30) @map("estado")
+  vuelo Vuelo[]
+  carga Carga[]
+  @@map("avion")
+}
+
+model Persona{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  nombre_completo String @db.VarChar(40) @map("nombre_completo")
+  cedula String @db.VarChar(15) @unique @map("cedula")
+  fecha_nacimiento DateTime @db.Date @map("fecha_nacimiento")
+  celular String @db.VarChar(15) @map("celular")
+  email String @db.VarChar(50) @map("email")
+  piloto Piloto[]
+  @@map("persona")
+}
+
+model Piloto{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  horas_vuelo Int @db.Integer @map("horas_vuelo")
+  fecha_contratacion DateTime @db.Date @map("fecha_contratacion")
+  licencia Licencia[]
+  persona Persona @relation(fields: [codigo_persona], references: [codigo])
+  codigo_persona Int
+  vuelo Vuelo[]
+  @@map("piloto")
+}
+
+model Licencia{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  tipo_licencia String @db.VarChar(5) @map("tipo_licencia")
+  fecha_emision DateTime @db.Date @map("fecha_emision")
+  fecha_expiracion DateTime @db.Date @map("fecha_expiracion")
+  piloto Piloto @relation(fields: [codigo_piloto], references: [codigo])
+  codigo_piloto Int
+
+  @@map("licencia")
+}
+
+model Vuelo{
+  num_vuelo Int @id @default(autoincrement()) @map("num_vuelo")
+  origen String @db.VarChar(30) @map("origen")
+  destino String @db.VarChar(30) @map("destino")
+  hora_salida DateTime @db.Time() @map("hora_salida")
+  fecha DateTime @db.Date @map("fecha")
+  avion Avion @relation(fields: [codigo_avion], references: [codigo])
+  codigo_avion Int
+  piloto Piloto @relation(fields: [codigo_piloto], references: [codigo])
+  codigo_piloto Int
+  ruta Ruta[]
+  VueloTripulacion VueloTripulacion[]
+
+}
+
+model Carga{
+  codigo_carga Int @id @default(autoincrement()) @map("codigo_carga")
+  peso Decimal @db.Decimal(10,2) @map("peso")
+  valor Decimal @db.Decimal(15,2) @map("valor")
+  tipo_carga String @db.VarChar(50) @map("tipo_carga")
+  avion Avion @relation(fields: [codigo_carga], references: [codigo])
+  codigo_avion Int
+}
+
+model Ruta{
+  num_codigo Int @id @default(autoincrement()) @map("codigo_ruta")
+  estado_ruta String @db.VarChar(20) @map("estado_ruta")
+  vuelo Vuelo @relation(fields: [num_codigo], references: [num_vuelo])
+  codigo_vuelo Int
+}
+
+model Regreso{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  fecha DateTime @db.Date @map("fecha")
+  base Base[]
+}
+
+model Base{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  nombre String @db.VarChar(15) @map("nombre")
+  direccion String @db.VarChar(25) @map("direccion")
+  capacidad Int @db.Integer @map("capacidad")
+  regreso Regreso @relation(fields: [codigo], references: [codigo])
+  codigo_regeso Int
+  mantenimiento Mantenimiento[]
+}
+
+model MiembroTripulacion{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  cargo String @db.VarChar(50) @map("cargo")
+  fecha_contratacion DateTime @db.Date @map("fecha_contratacion")
+  idiomas_hablados String @db.VarChar(255) @map("ped_estado")
+  VueloTripulacion VueloTripulacion[]
+  certificacion Certificacion[]
+}
+
+model VueloTripulacion{
+  miembroTripulacion MiembroTripulacion @relation(fields: [miemTripu_id], references: [codigo])
+  miemTripu_id Int @unique
+  vuelo Vuelo @relation(fields: [vuelo_id], references: [num_vuelo])
+  vuelo_id Int @unique
+}
+
+model Certificacion{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  tipoCerti String @db.VarChar(5) @map("tipoCerti")
+  fecha_obtencion DateTime @db.Date @map("fecha_obtencion")
+  miembroTripulacion MiembroTripulacion @relation(fields: [miemTripu_id], references: [codigo])
+  miemTripu_id Int @unique
+}
+
+model Mantenimiento{
+  codigo Int @id @default(autoincrement()) @map("codigo")
+  fecha DateTime @db.Date @map("fecha")
+  costo Decimal @db.Decimal(10,2) @map("costo")
+  base Base @relation(fields: [codigo], references: [codigo])
+  codigo_base Int
+}

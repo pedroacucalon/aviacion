@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registrar Avión - Página Aérea</title>
+    <link rel="stylesheet" href="../css/crearAvion.css" />
+    <link rel="icon" href="../images/logoAvion.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../images/logoAvion.png" sizes="16x16" type="image/png">
+
+</head>
+
+<body>
+    <h1>Formulario para Registrar Avion</h1>
+    <form action="">
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" maxlength="50" required /><br />
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="">Seleccione una opcion</option>
+            <option value="comercial">Avión Comercial</option>
+            <option value="carga">Avión de Carga</option>
+            <option value="militar">Avión Militar</option>
+            <option value="privado">Avión Privado</option>
+            <option value="entrenamiento">Avión de Entrenamiento</option>
+            <option value="negocios">Avión de Negocios</option>
+            <option value="rescate">Avión de Rescate y Emergencia</option>
+            <option value="agricola">Avión de Fumigación Agrícola</option>
+            <option value="investigacion">Avión de Investigación y Exploración</option>
+            <option value="anfibio">Avión Anfibio</option>
+        </select><br />
+
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" name="capacidad" required /><br />
+
+        <label for="matricula">MatrÍcula:</label>
+        <input type="text" id="matricula" name="matricula" maxlength="20" required /><br />
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required >
+            <option value="">Seleccione un opcion</option>
+            <option value="operativo">Operativo</option>
+            <option value="mantenimiento">En Mantenimiento</option>
+            <option value="inactivo">Inactivo</option>
+            <option value="retirado">Retirado</option>
+        </select><br /><br>
+        <div class="button">
+            <input type="submit" value="Crear Avion" id="btnInsertar" />
+            <input type="button" value="Volver" onclick="goBack()" />
+        </div>
+    </form>
+    <footer>
+        <p>&copy; 2024 Compañía Aérea. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:info@companiaaerea.com">info@companiaaerea.com</a></p>
+        <p><a href="../html/terminos.html">Términos y Condiciones</a> | <a href="../html/politica.html">Política de
+            Privacidad</a></p>
+    </footer>
+    <script>
+        function goBack() {
+            window.location.href='../index.html';
+        }
+    </script>
+    <script src="../js/crearAvion.js"></script>
+</body>
+
+</html>

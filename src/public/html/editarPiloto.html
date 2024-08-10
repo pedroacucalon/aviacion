@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Datos Piloto - Página Aérea</title>
+    <link rel="stylesheet" href="../css/editarPiloto.css" />
+    <style>
+        /* Agregar estilos específicos para campos de solo lectura */
+        input[readonly] {
+            background-color: #a9aaa7; /* Gris claro */
+            cursor: not-allowed; /* Cursor de no permitido */
+        }
+    </style>
+    <link rel="icon" href="../images/logoAvion.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="../images/logoAvion.png" sizes="16x16" type="image/png">
+
+</head>
+<body>
+    <h1>Datos Piloto</h1>
+    <form action="" id="editarPilotoForm">
+
+        <!-- Campos de la tabla PERSONA -->
+        <label for="nombre_completo">Nombre Completo:</label>
+        <input type="text" id="nombre_completo" name="nombre_completo" maxlength="40" required /><br />
+
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula" maxlength="15" required /><br />
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required /><br />
+
+        <label for="celular">Celular:</label>
+        <input type="tel" id="celular" name="celular" maxlength="15" required /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="50" required /><br />
+
+        <!-- Campos específicos de la tabla PILOTO -->
+
+        <label for="horas_vuelo">Horas de Vuelo:</label>
+        <input type="number" id="horas_vuelo" name="horas_vuelo" required /><br />
+
+        <label for="fecha_contratacion">Fecha de Contratación:</label>
+        <input type="date" id="fecha_contratacion" name="fecha_contratacion" required /><br />
+        <div class="button">
+            <input type="submit" value="Actualizar" id="btnInsertar" />
+            <input type="button" value="Volver" onclick="goBack()" />
+        </div>
+    </form>
+    <footer>
+        <p>&copy; 2024 Compañía Aérea. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:info@companiaaerea.com">info@companiaaerea.com</a></p>
+        <p><a href="../html/terminos.html">Términos y Condiciones</a> | <a href="../html/politica.html">Política de
+            Privacidad</a></p>
+    </footer>
+    <script>
+        document.getElementById('cedula').readOnly = true;
+        function goBack() {
+            window.location.href='../html/consultarPiloto.html';
+        }
+    </script>
+    <script src="../js/editarPiloto.js"></script>
+</body>
+
+</html>
